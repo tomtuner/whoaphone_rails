@@ -2,9 +2,12 @@ require 'api_constraints'
 
 Whoaphone::Application.routes.draw do
   
-	namespace :api, :defaults => {:format => 'json'} do
+	namespace :api, :defaults => {:format => 'json' } do
 		scope :module => :v1, :constraints => ApiConstraints.new(:version => 1, :default => true) do
       resources :devices
+      
+      resources :twilio_auth
+      resources :basic_call
       
       # resources :events
       # resources :scans
@@ -16,7 +19,9 @@ Whoaphone::Application.routes.draw do
   
   #get "devices/index"
   resources :devices
- 
+  resources :twilio_auth
+  resources :basic_call
+  
    # resources :events
    # resources :scans
    # resources :customers

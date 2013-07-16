@@ -12,6 +12,8 @@ gem 'therubyracer'
 
 gem 'json'
 
+gem 'twilio'
+gem 'twilio-ruby'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
