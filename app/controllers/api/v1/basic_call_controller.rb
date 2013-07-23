@@ -7,7 +7,16 @@ module Api
       respond_to :xml
       
       def index
-        numberToCall = params[:PhoneNumber]
+        # numberToCall = params[:Called]
+        # Rails.logger.info(numberToCall)
+        # if (!numberToCall)
+          numberToCall = params[:PhoneNumber]
+          # Rails.logger.info(numberToCall)
+          if (numberToCall.to_s.empty?)
+            numberToCall = params[:Called]
+          end
+          numberToCall = numberToCall.gsub(/[^0-9]/, "")
+        # end
         
         cert = File.read(File.join(Rails.root, 'config', 'ck.pem'))
         ctx = OpenSSL::SSL::SSLContext.new
